@@ -22,18 +22,13 @@ public class Main {
 			System.out.print(list_of_numbers.get(i));
 		}
 		
-		int a, b;
-		a = 3;
-		b = 4;
-		int result = soma(a,b);
-		System.out.println("\n"+result);
+
 		
 	}
 	
 	
-	public static int soma(int a, int b) {
-		return a + b;
+	public static boolean binary_search(int value, ArrayList<Integer> array) {
+		return false;
 	}
-	
 	
 }
