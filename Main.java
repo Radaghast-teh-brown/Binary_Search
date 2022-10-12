@@ -22,13 +22,17 @@ public class Main {
 			System.out.print(list_of_numbers.get(i));
 		}
 		
-
-		
 	}
 	
 	
 	public static boolean binary_search(int value, ArrayList<Integer> array) {
-		return false;
+		
+		if( array.size() == 0)return false;
+		else {
+			int midElement = array.size()/2;
+			
+			return true;
+		}
 	}
 	
 }
