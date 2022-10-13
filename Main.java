@@ -37,21 +37,26 @@ public class Main {
 		
 		ArrayList<Integer> new_array = new ArrayList<Integer>();
 		new_array = array_enter;
+		int begin = 0;
+		int end = array_enter.size()-1;
 		
-		if( new_array.size() == 0)return -1;
-		else {
-			int middle = new_array.size()/2;
-			if( new_array.get(middle) == value) {
-				return middle;
-			}else if(new_array.get(middle) > value) {
-				new_array = (ArrayList<Integer>) array_enter.subList(0, middle);
-				binary_search(value, new_array );
-			}else if(new_array.get(middle) < value) {
-				new_array = (ArrayList<Integer>) array_enter.subList(middle + 1, new_array.size());
+		while( end >= begin) {
+			if( new_array.size() == 0)return -1;
+			else {
+				int middle = (begin + end)/2;
+				if( new_array.get(middle) == value) {
+					return middle;
+				}else if(new_array.get(middle) > value) {
+					new_array = (ArrayList<Integer>) array_enter.subList(0, middle);
+					binary_search(value, new_array );
+				}else if(new_array.get(middle) < value) {
+					new_array = (ArrayList<Integer>) array_enter.subList(middle + 1, new_array.size());
+				}
+				return -1;
 			}
-			return -1;
-			
 		}
+		return -1;
+		
 	}
 	
 }
