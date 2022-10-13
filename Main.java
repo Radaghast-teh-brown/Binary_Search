@@ -18,20 +18,39 @@ public class Main {
 				System.out.println("Incorrect input");
 			}	
 		}
+		
+		System.out.println("Raw list\n");
 		for(int i = 0; i < list_of_numbers.size(); i++) {
-			System.out.print(list_of_numbers.get(i));
+			System.out.print(list_of_numbers.get(i) + " ");
 		}
 		
+		System.out.println("\nSorted list\n");
+		list_of_numbers.sort(null);
+		for(int i = 0; i < list_of_numbers.size(); i++) {
+			System.out.print(list_of_numbers.get(i) + " ");
+		}
 	}
 	
+
 	
-	public static boolean binary_search(int value, ArrayList<Integer> array) {
+	public static int binary_search(int value, ArrayList<Integer> array_enter) {
 		
-		if( array.size() == 0)return false;
+		ArrayList<Integer> new_array = new ArrayList<Integer>();
+		new_array = array_enter;
+		
+		if( new_array.size() == 0)return -1;
 		else {
-			int midElement = array.size()/2;
+			int middle = new_array.size()/2;
+			if( new_array.get(middle) == value) {
+				return middle;
+			}else if(new_array.get(middle) > value) {
+				new_array = (ArrayList<Integer>) array_enter.subList(0, middle);
+				binary_search(value, new_array );
+			}else if(new_array.get(middle) < value) {
+				new_array = (ArrayList<Integer>) array_enter.subList(middle + 1, new_array.size());
+			}
+			return -1;
 			
-			return true;
 		}
 	}
 	
