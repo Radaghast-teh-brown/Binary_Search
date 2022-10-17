@@ -20,37 +20,30 @@ public class Main {
 			System.out.print(list_of_numbers[i] + " ");
 		}
 		
-		System.out.println("\nSorted list\n");
+		System.out.println("\nThe answer (1) or (0)\n");
 		
-		for(int i = 0; i < list_of_numbers.length; i++) {
-			System.out.print(list_of_numbers[i] + " ");
-		}
-		
-		int answer  = binary_search(1,list_of_numbers);
+		int answer  = binary_search(1, 0, list_of_numbers.length, list_of_numbers);
 		System.out.println(answer);
 	}
 	
 
 	
-	public static int binary_search(int value, int [] array_enter) {
-		
-		int[] new_array = new int[array_enter.length];
-		new_array = array_enter.clone();
-		int begin = 0;
-		int end = array_enter.length;
+	public static int binary_search(int value, int beg, int ed, int [] new_array) {
+		int begin = beg;
+		int end = ed;
 		
 		while( end >= begin) {
-			if( new_array.length == 0)return -1;
+			if( new_array.length == value) {
+				return 1;
+				}
 			else {
 				int middle = (begin + end)/2;
 				if( new_array[middle] == value) {
 					return middle;
 				}else if(new_array[middle] > value) {
-					System.arraycopy(array_enter, 0, new_array, 0,middle-1);
-					binary_search(value, new_array );
+					binary_search(value, 0, middle-1, new_array );
 				}else if(new_array[middle] < value) {
-					System.arraycopy(array_enter, 0, new_array, 0,middle+1);
-					binary_search(value, new_array );
+					binary_search(value, middle+1 , new_array.length, new_array );
 				}
 				return -1;
 			}
