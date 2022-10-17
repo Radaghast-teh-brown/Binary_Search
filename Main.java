@@ -22,7 +22,7 @@ public class Main {
 		
 		System.out.println("\nThe answer (1) or (0)\n");
 		
-		int answer  = binary_search(1, 0, list_of_numbers.length, list_of_numbers);
+		int answer  = binary_search(10, 0, list_of_numbers.length, list_of_numbers);
 		System.out.println(answer);
 	}
 	
@@ -31,24 +31,19 @@ public class Main {
 	public static int binary_search(int value, int beg, int ed, int [] new_array) {
 		int begin = beg;
 		int end = ed;
-		
-		while( end >= begin) {
-			if( new_array.length == value) {
-				return 1;
+		int middle = begin + (end - begin)/2;
+		if( end >= begin) {
+				if( new_array[middle] == value){
+					return 1;
 				}
-			else {
-				int middle = (begin + end)/2;
-				if( new_array[middle] == value) {
-					return middle;
-				}else if(new_array[middle] > value) {
-					binary_search(value, 0, middle-1, new_array );
-				}else if(new_array[middle] < value) {
-					binary_search(value, middle+1 , new_array.length, new_array );
+				if(new_array[middle] > value) {
+					return binary_search(value, begin, middle-1, new_array );
 				}
-				return -1;
+				if(new_array[middle] < value) {
+					return binary_search(value, middle+1 , end, new_array );
+				}
 			}
-		}
-		return -1;
+		return 0;
 		
 	}
 	
